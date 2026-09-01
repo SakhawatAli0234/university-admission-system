@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="style.css">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student Dashboard | Portal</title>
+    <!-- Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <main class="registration-card">
+        
+        <!-- Header -->
+        <header class="form-header">
+            <h2>Student Dashboard</h2>
+            <p>Welcome back! Monitor your application status and account overview below.</p>
+        </header>
+
+        <!-- Status Overview Section -->
+        <section class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-chart-line"></i> Application Status
+            </h3>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Application ID</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-hashtag"></i>
+                        <input type="text" value="APP-2026-8942" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Current Status</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-circle-check" style="color: #10b981;"></i>
+                        <input type="text" value="Under Review" readonly>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Details Section -->
+        <section class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-id-badge"></i> Applicant Details
+            </h3>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" value="Sakhawat Ali" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Applied Program</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-book-open"></i>
+                        <input type="text" value="BS Computer Science (BSCS)" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" value="student@example.com" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" value="0300-1234567" readonly>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Controls -->
+        <footer class="form-actions">
+            <a href="register.html" class="btn btn-secondary" style="text-decoration: none;">
+                <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+            </a>
+            <button type="button" class="btn btn-primary" onclick="window.print()">
+                <i class="fa-solid fa-download"></i> Download Slip
+            </button>
+        </footer>
+
+    </main>
+
 </body>
 </html>
