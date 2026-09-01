@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="University Admission and Entrance Test Management System">
+
+    <meta name="theme-color" content="#2563eb">
+
+    <title>UniAdmission | Admission & Entrance Test Management System</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #eff6ff;
+            --dark: #0f172a;
+            --text: #475569;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --success: #16a34a;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--background);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        section {
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            color: var(--dark);
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand i {
+            color: var(--primary);
+            margin-right: 9px;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand span {
+            color: var(--primary);
+        }
+
+        .nav-link {
+            color: var(--text) !important;
+            font-weight: 500;
+            margin: 0 7px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        .navbar-toggler {
+            border: 1px solid var(--border);
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .btn-primary-custom {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 23px;
+            border-radius: 9px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            padding: 11px 22px;
+            border-radius: 9px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 680px;
+            display: flex;
+            align-items: center;
+            padding: 90px 0;
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(37, 99, 235, 0.10),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eff6ff 0%,
+                    #ffffff 55%,
+                    #f8fafc 100%
+                );
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.08;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -1.5px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-description {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+
+        /* =====================================================
+           PORTAL PREVIEW
+        ===================================================== */
+
+        .portal-wrapper {
+            position: relative;
+        }
+
+        .portal-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: 0 25px 70px rgba(15, 23, 42, 0.12);
+            position: relative;
+            z-index: 2;
+        }
+
+        .portal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 18px;
+        }
+
+        .portal-title {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .portal-status {
+            color: var(--success);
+            background: #dcfce7;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 5px 9px;
+            border-radius: 20px;
+        }
+
+        .application-progress {
+            background: #f1f5f9;
+            border-radius: 20px;
+            height: 9px;
+            overflow: hidden;
+            margin: 10px 0 20px;
+        }
+
+        .application-progress-bar {
+            width: 72%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                var(--primary),
+                #60a5fa
+            );
+            border-radius: 20px;
+        }
+
+        .portal-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .portal-item:hover {
+            border-color: #bfdbfe;
+            background: #f8fbff;
+            transform: translateX(3px);
+        }
+
+        .portal-item-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .portal-item h6 {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .portal-item small {
+            color: var(--muted);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+            border-radius: 12px;
+            padding: 12px 15px;
+            z-index: 3;
+        }
+
+        .floating-card.test {
+            left: -45px;
+            bottom: 40px;
+        }
+
+        .floating-card.result {
+            right: -30px;
+            top: 55px;
+        }
+
+        .floating-icon {
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #eff6ff;
+            color: var(--primary);
+            margin-right: 8px;
+        }
+
+
+        /* =====================================================
+           SECTION TITLES
+        ===================================================== */
+
+        .section-padding {
+            padding: 95px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 55px;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 13px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+
+        /* =====================================================
+           SYSTEM FEATURES
+        ===================================================== */
+
+        .features {
+            background: white;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: #bfdbfe;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.45rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.94rem;
+            margin: 0;
+        }
+
+
+        /* =====================================================
+           HOW IT WORKS
+        ===================================================== */
+
+        .process {
+            background: var(--background);
+        }
+
+        .process-card {
+            text-align: center;
+            position: relative;
+            padding: 15px;
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-weight: 700;
+        }
+
+        .process-card h5 {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .process-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stats {
+            background: var(--dark);
+            padding: 75px 0;
+            color: white;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #60a5fa;
+        }
+
+        .stat-label {
+            color: #cbd5e1;
+            margin-top: 5px;
+            font-size: 0.92rem;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+            padding: 90px 0;
+            background: linear-gradient(
+                135deg,
+                #eff6ff,
+                #dbeafe
+            );
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 14px;
+        }
+
+        .cta p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 0 auto 27px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #020617;
+            color: #cbd5e1;
+            padding: 45px 0 25px;
+        }
+
+        .footer-brand {
+            color: white;
+            font-weight: 800;
+            font-size: 1.15rem;
+        }
+
+        .footer-brand i {
+            color: #60a5fa;
+            margin-right: 7px;
+        }
+
+        .footer-text {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            max-width: 400px;
+            margin-top: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+
+        /* =====================================================
+           SCROLL ANIMATION
+        ===================================================== */
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 991px) {
+
+            .hero {
+                text-align: center;
+                padding: 70px 0;
+            }
+
+            .hero-content {
+                margin: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .portal-wrapper {
+                max-width: 600px;
+                margin: 60px auto 0;
+            }
+
+            .floating-card.test {
+                left: -10px;
+            }
+
+            .floating-card.result {
+                right: -10px;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .hero {
+                padding: 55px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons a {
+                width: 100%;
+            }
+
+            .section-padding {
+                padding: 70px 0;
+            }
+
+            .section-title h2,
+            .cta h2 {
+                font-size: 1.9rem;
+            }
+
+            .portal-card {
+                padding: 17px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-mortarboard-fill"></i>
+                Uni<span>Admission</span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">
+                            Features
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#process">
+                            How It Works
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+
+                        <a href="#apply" class="btn-primary-custom">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            Student Portal
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-7">
+
+                    <div class="hero-content fade-in">
+
+                        <div class="hero-badge">
+                            <i class="bi bi-shield-check"></i>
+                            Secure University Admission Portal
+                        </div>
+
+                        <h1>
+                            Manage Your
+                            <span>Admission & Entrance Test</span>
+                            Online
+                        </h1>
+
+                        <p class="hero-description">
+                            A complete digital platform for students to
+                            register, submit admission applications,
+                            select programs, take entrance tests,
+                            and view results — all from one place.
+                        </p>
+
+                        <div class="hero-buttons">
+
+                            <a href="#apply" class="btn-primary-custom">
+                                Start Application
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+
+                            <a href="#features" class="btn-outline-custom">
+                                Explore System
+                                <i class="bi bi-grid"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PORTAL PREVIEW -->
+
+                <div class="col-lg-5">
+
+                    <div class="portal-wrapper fade-in">
+
+                        <div class="portal-card">
+
+                            <div class="portal-header">
+
+                                <div class="portal-title">
+                                    <i class="bi bi-speedometer2 text-primary me-2"></i>
+                                    Student Portal
+                                </div>
+
+                                <span class="portal-status">
+                                    Application Active
+                                </span>
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <div class="d-flex justify-content-between">
+
+                                    <small class="text-muted">
+                                        Application Progress
+                                    </small>
+
+                                    <small class="fw-bold text-primary">
+                                        72%
+                                    </small>
+
+                                </div>
+
+                                <div class="application-progress">
+
+                                    <div class="application-progress-bar"></div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="portal-item">
+
+                                <div class="portal-item-icon">
+                                    <i class="bi bi-file-earmark-check"></i>
+                                </div>
+
+                                <div>
+                                    <h6>Admission Application</h6>
+                                    <small>Application submitted</small>
+                                </div>
+
+                                <i class="bi bi-check-circle-fill text-success ms-auto"></i>
+
+                            </div>
+
+
+                            <div class="portal-item">
+
+                                <div class="portal-item-icon">
+                                    <i class="bi bi-pencil-square"></i>
+                                </div>
+
+                                <div>
+                                    <h6>Entrance Test</h6>
+                                    <small>Scheduled for September 15</small>
+                                </div>
+
+                                <i class="bi bi-chevron-right ms-auto text-muted"></i>
+
+                            </div>
+
+
+                            <div class="portal-item">
+
+                                <div class="portal-item-icon">
+                                    <i class="bi bi-bar-chart"></i>
+                                </div>
+
+                                <div>
+                                    <h6>Test Result</h6>
+                                    <small>Result will appear here</small>
+                                </div>
+
+                                <i class="bi bi-clock ms-auto text-warning"></i>
+
+                            </div>
+
+
+                            <div class="portal-item mb-0">
+
+                                <div class="portal-item-icon">
+                                    <i class="bi bi-bell"></i>
+                                </div>
+
+                                <div>
+                                    <h6>Notifications</h6>
+                                    <small>2 new notifications</small>
+                                </div>
+
+                                <span class="badge bg-primary ms-auto">
+                                    2
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Floating Test Card -->
+
+                        <div class="floating-card test">
+
+                            <span class="floating-icon">
+                                <i class="bi bi-clock"></i>
+                            </span>
+
+                            <strong>Test Ready</strong>
+
+                        </div>
+
+
+                        <!-- Floating Result Card -->
+
+                        <div class="floating-card result">
+
+                            <span class="floating-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </span>
+
+                            <strong>Track Results</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FEATURES
+    ====================================================== -->
+
+    <section class="features section-padding" id="features">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <div class="section-label">
+                    System Features
+                </div>
+
+                <h2>
+                    Everything You Need in One Portal
+                </h2>
+
+                <p>
+                    The system manages the complete admission and entrance
+                    test process from student registration to final results.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card fade-in">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-person-plus-fill"></i>
+                        </div>
+
+                        <h4>Student Registration</h4>
+
+                        <p>
+                            Students can create accounts and securely
+                            provide their personal and academic information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card fade-in">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-file-earmark-text-fill"></i>
+                        </div>
+
+                        <h4>Admission Applications</h4>
+
+                        <p>
+                            Complete and submit applications while selecting
+                            the desired degree program and department.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card fade-in">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+
+                        <h4>Online Entrance Test</h4>
+
+                        <p>
+                            Take online entrance examinations with timed
+                            questions and automatic submission.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card fade-in">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-clipboard-data"></i>
+                        </div>
+
+                        <h4>Automatic Results</h4>
+
+                        <p>
+                            Test marks, percentages, pass or fail status,
+                            and merit information can be displayed instantly.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card fade-in">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-bar-chart-line-fill"></i>
+                        </div>
+
+                        <h4>Application Tracking</h4>
+
+                        <p>
+                            Students can monitor application progress and
+                            admission decisions from their dashboard.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="feature-card fade-in">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-bell-fill"></i>
+                        </div>
+
+                        <h4>Notifications</h4>
+
+                        <p>
+                            Important admission deadlines, test schedules,
+                            results, and system updates are shown to students.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+    ====================================================== -->
+
+    <section class="process section-padding" id="process">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <div class="section-label">
+                    Student Journey
+                </div>
+
+                <h2>
+                    How the Admission Process Works
+                </h2>
+
+                <p>
+                    A simple step-by-step process designed to make
+                    university admission easier for students.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card fade-in">
+
+                        <div class="process-number">
+                            01
+                        </div>
+
+                        <h5>Create Account</h5>
+
+                        <p>
+                            Register as a student and create your secure
+                            admission portal account.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card fade-in">
+
+                        <div class="process-number">
+                            02
+                        </div>
+
+                        <h5>Submit Application</h5>
+
+                        <p>
+                            Enter your personal and academic information
+                            and select your desired program.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card fade-in">
+
+                        <div class="process-number">
+                            03
+                        </div>
+
+                        <h5>Take Entrance Test</h5>
+
+                        <p>
+                            Complete your scheduled online entrance
+                            examination through the student portal.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="process-card fade-in">
+
+                        <div class="process-number">
+                            04
+                        </div>
+
+                        <h5>View Result</h5>
+
+                        <p>
+                            Check your marks, percentage, result status,
+                            and admission progress.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <section class="stats" id="about">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-6 col-lg-3">
+
+                    <div class="stat-box fade-in">
+
+                        <div class="stat-number" data-target="5000">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Registered Students
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+
+                    <div class="stat-box fade-in">
+
+                        <div class="stat-number" data-target="120">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Degree Programs
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+
+                    <div class="stat-box fade-in">
+
+                        <div class="stat-number" data-target="50">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Entrance Tests
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-6 col-lg-3">
+
+                    <div class="stat-box fade-in">
+
+                        <div class="stat-number" data-target="98">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            System Satisfaction %
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="cta" id="apply">
+
+        <div class="container">
+
+            <div class="fade-in">
+
+                <div class="section-label">
+                    Student Portal
+                </div>
+
+                <h2>
+                    Ready to Begin Your Admission?
+                </h2>
+
+                <p>
+                    Create your account, complete your application,
+                    and take the next step toward your academic future.
+                </p>
+
+                <div class="hero-buttons justify-content-center">
+
+                    <a href="#" class="btn-primary-custom" id="startApplication">
+                        Create Student Account
+                        <i class="bi bi-person-plus"></i>
+                    </a>
+
+                    <a href="#" class="btn-outline-custom" id="loginButton">
+                        Student Login
+                        <i class="bi bi-box-arrow-in-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-7">
+
+                    <div class="footer-brand">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        UniAdmission
+                    </div>
+
+                    <p class="footer-text">
+                        University Admission and Entrance Test Management
+                        System designed to simplify the student admission
+                        journey.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-5">
+
+                    <div class="footer-links">
+
+                        <a href="#home">Home</a>
+                        <a href="#features">Features</a>
+                        <a href="#process">How It Works</a>
+                        <a href="#apply">Student Portal</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                &copy;
+                <span id="currentYear"></span>
+                UniAdmission. All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         BOOTSTRAP JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- =====================================================
+         CUSTOM JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           CURRENT YEAR
+        ===================================================== */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        /* =====================================================
+           SCROLL ANIMATION
+        ===================================================== */
+
+        const fadeElements =
+            document.querySelectorAll(".fade-in");
+
+        const fadeObserver =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            fadeObserver.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        fadeElements.forEach(function (element) {
+
+            fadeObserver.observe(element);
+
+        });
+
+
+        /* =====================================================
+           ANIMATED STATISTICS
+        ===================================================== */
+
+        const statNumbers =
+            document.querySelectorAll(".stat-number");
+
+        const statsObserver =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        const counter = entry.target;
+
+                        const target =
+                            Number(counter.dataset.target);
+
+                        let current = 0;
+
+                        const duration = 1500;
+
+                        const startTime = performance.now();
+
+
+                        function animateCounter(currentTime) {
+
+                            const progress =
+                                Math.min(
+                                    (currentTime - startTime) / duration,
+                                    1
+                                );
+
+                            const easedProgress =
+                                1 - Math.pow(1 - progress, 3);
+
+                            current =
+                                Math.floor(
+                                    easedProgress * target
+                                );
+
+                            counter.textContent =
+                                current.toLocaleString();
+
+                            if (progress < 1) {
+
+                                requestAnimationFrame(
+                                    animateCounter
+                                );
+
+                            } else {
+
+                                counter.textContent =
+                                    target.toLocaleString();
+
+                            }
+
+                        }
+
+
+                        requestAnimationFrame(
+                            animateCounter
+                        );
+
+                        statsObserver.unobserve(counter);
+
+                    });
+
+                },
+                {
+                    threshold: 0.5
+                }
+            );
+
+
+        statNumbers.forEach(function (number) {
+
+            statsObserver.observe(number);
+
+        });
+
+
+        /* =====================================================
+           NAVBAR ACTIVE LINK
+        ===================================================== */
+
+        const sections =
+            document.querySelectorAll("section[id]");
+
+        const navLinks =
+            document.querySelectorAll(".nav-link");
+
+
+        window.addEventListener("scroll", function () {
+
+            let currentSection = "";
+
+            sections.forEach(function (section) {
+
+                const sectionTop =
+                    section.offsetTop - 150;
+
+                const sectionHeight =
+                    section.offsetHeight;
+
+                if (
+                    window.scrollY >= sectionTop &&
+                    window.scrollY < sectionTop + sectionHeight
+                ) {
+
+                    currentSection =
+                        section.getAttribute("id");
+
+                }
+
+            });
+
+
+            navLinks.forEach(function (link) {
+
+                link.classList.remove("active");
+
+                if (
+                    link.getAttribute("href") ===
+                    "#" + currentSection
+                ) {
+
+                    link.classList.add("active");
+
+                }
+
+            });
+
+        });
+
+
+        /* =====================================================
+           MOBILE NAVBAR CLOSE
+        ===================================================== */
+
+        navLinks.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                if (window.innerWidth < 992) {
+
+                    const navbar =
+                        document.getElementById("mainNavbar");
+
+                    const collapse =
+                        bootstrap.Collapse.getInstance(navbar);
+
+                    if (collapse) {
+                        collapse.hide();
+                    }
+
+                }
+
+            });
+
+        });
+
+
+        /* =====================================================
+           APPLICATION BUTTON
+        ===================================================== */
+
+        document
+            .getElementById("startApplication")
+            .addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                alert(
+                    "Student Registration\n\n" +
+                    "The registration page will be connected here."
+                );
+
+            });
+
+
+        /* =====================================================
+           LOGIN BUTTON
+        ===================================================== */
+
+        document
+            .getElementById("loginButton")
+            .addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                alert(
+                    "Student Login\n\n" +
+                    "The login page will be connected here."
+                );
+
+            });
+
+    </script>
+
+</body>
+
+</html>
