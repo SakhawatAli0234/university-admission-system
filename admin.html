@@ -1,12 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="style.css">
-
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Management Portal</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <main class="registration-card">
+        
+        <!-- Header -->
+        <header class="form-header">
+            <h2>Admin Management Control</h2>
+            <p>Review submitted student applications and manage portal configurations.</p>
+        </header>
+
+        <!-- System Summary -->
+        <section class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-chart-pie"></i> Portal Summary
+            </h3>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Total Registered Applicants</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-users"></i>
+                        <input type="text" value="148 Students" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Pending Verifications</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <input type="text" value="24 Applications" readonly>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Review Controls -->
+        <section class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-user-gear"></i> Applicant Status Management
+            </h3>
+            
+            <form action="#" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="applicantId">Select Applicant ID</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <select id="applicantId" name="applicantId" required>
+                                <option value="" disabled selected>Select Student ID</option>
+                                <option value="APP-2026-8942">APP-2026-8942 — Sakhawat Ali</option>
+                                <option value="APP-2026-8943">APP-2026-8943 — Ahmed Khan</option>
+                                <option value="APP-2026-8944">APP-2026-8944 — Sara Hassan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updateStatus">Update Status Action</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-list-check"></i>
+                            <select id="updateStatus" name="updateStatus" required>
+                                <option value="" disabled selected>Choose Status</option>
+                                <option value="approved">Approve Application</option>
+                                <option value="rejected">Reject Application</option>
+                                <option value="pending">Keep Pending</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="adminNotes">Admin Verification Notes</label>
+                        <textarea id="adminNotes" name="adminNotes" rows="3" placeholder="Enter review remarks or missing document notices..."></textarea>
+                    </div>
+                </div>
+
+                <footer class="form-actions">
+                    <a href="dashboard.html" class="btn btn-secondary" style="text-decoration: none;">
+                        <i class="fa-solid fa-chart-line"></i> Go to Dashboard
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Record
+                    </button>
+                </footer>
+            </form>
+        </section>
+
+    </main>
+
 </body>
 </html>
