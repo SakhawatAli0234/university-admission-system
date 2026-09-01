@@ -1,11 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="style.css">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admission Entry Test Portal</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <main class="registration-card">
+        
+        <!-- Header -->
+        <header class="form-header">
+            <h2>Admission Entry Test</h2>
+            <p>Complete the preliminary assessment test to verify your core competency.</p>
+        </header>
+
+        <form action="#" method="POST">
+            
+            <!-- Test Schedule Info -->
+            <fieldset class="form-section">
+                <legend class="section-title">
+                    <i class="fa-solid fa-clock"></i> Test Details
+                </legend>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Candidate ID</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-id-badge"></i>
+                            <input type="text" value="APP-2026-8942" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Test Subject</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <input type="text" value="General CS & Mathematics" readonly>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sample Question 1 -->
+            <fieldset class="form-section">
+                <legend class="section-title">
+                    <i class="fa-solid fa-circle-question"></i> Question 1: Programming Logic
+                </legend>
+                
+                <p style="margin-bottom: 12px; font-weight: 600; color: #0f172a;">
+                    Which data structure operates on a First-In, First-Out (FIFO) basis?
+                </p>
+
+                <div class="form-group full-width">
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-list-ul"></i>
+                        <select name="q1" required>
+                            <option value="" disabled selected>Select Answer</option>
+                            <option value="stack">Stack</option>
+                            <option value="queue">Queue</option>
+                            <option value="tree">Tree</option>
+                            <option value="graph">Graph</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Sample Question 2 -->
+            <fieldset class="form-section">
+                <legend class="section-title">
+                    <i class="fa-solid fa-circle-question"></i> Question 2: Web Fundamentals
+                </legend>
+                
+                <p style="margin-bottom: 12px; font-weight: 600; color: #0f172a;">
+                    Which element is used to link an external CSS stylesheet to an HTML document?
+                </p>
+
+                <div class="form-group full-width">
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-code"></i>
+                        <select name="q2" required>
+                            <option value="" disabled selected>Select Answer</option>
+                            <option value="script">&lt;script&gt;</option>
+                            <option value="style">&lt;style&gt;</option>
+                            <option value="link">&lt;link&gt;</option>
+                            <option value="css">&lt;css&gt;</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Action Buttons -->
+            <footer class="form-actions">
+                <a href="dashboard.html" class="btn btn-secondary" style="text-decoration: none;">
+                    <i class="fa-solid fa-arrow-left"></i> Dashboard
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-check-double"></i> Submit Test
+                </button>
+            </footer>
+
+        </form>
+    </main>
+
 </body>
 </html>
